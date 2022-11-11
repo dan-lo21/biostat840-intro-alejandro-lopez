@@ -1,0 +1,4 @@
+"0","sets <- sets %>% select('set_num', 'name', 'year', 'theme_id', 'num_parts')"
+"0","colnames(themes) <- c('theme_id', 'theme_name', 'parent_id')"
+"0","themes <- themes %>% select('theme_id', 'theme_name')"
+"0","with_theme <- inner_join(sets, themes, by='theme_id')"
