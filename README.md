@@ -1,4 +1,1 @@
-
-#Daniel Alejandro Lopez's Website
-
-This is my personal website!
+Hello, this is my personal website! I am currently a master's student at the Bloomberg School of Public Health interested in applying statistical and computational methods to biology. My website is: https://dan-lo21.github.io/biostat840-intro-alejandro-lopez/
