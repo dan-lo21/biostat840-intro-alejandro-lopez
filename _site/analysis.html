@@ -165,7 +165,7 @@ div.csl-indent {
     <a class="nav-link" href="./index.html">Home</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html">About</a>
+    <a class="nav-link" href="./about.html">About Me</a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./analysis.html" aria-current="page">Analysis</a>
@@ -181,7 +181,19 @@ div.csl-indent {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#motivating-question" id="toc-motivating-question" class="nav-link active" data-scroll-target="#motivating-question">Motivating Question</a></li>
+  <li><a href="#pieces-or-number-of-sets" id="toc-pieces-or-number-of-sets" class="nav-link" data-scroll-target="#pieces-or-number-of-sets">Pieces or Number of Sets?</a></li>
+  <li><a href="#change-in-number-of-pieces-over-the-years" id="toc-change-in-number-of-pieces-over-the-years" class="nav-link" data-scroll-target="#change-in-number-of-pieces-over-the-years">Change in Number of Pieces over the Years</a></li>
+  <li><a href="#distribution-of-number-of-sets" id="toc-distribution-of-number-of-sets" class="nav-link" data-scroll-target="#distribution-of-number-of-sets">Distribution of Number of Sets</a></li>
+  <li><a href="#looking-at-specific-themes" id="toc-looking-at-specific-themes" class="nav-link" data-scroll-target="#looking-at-specific-themes">Looking at Specific Themes</a></li>
+  <li><a href="#pictures-of-the-sets" id="toc-pictures-of-the-sets" class="nav-link" data-scroll-target="#pictures-of-the-sets">Pictures of the Sets!</a></li>
+  <li><a href="#functions-used" id="toc-functions-used" class="nav-link" data-scroll-target="#functions-used">Functions Used</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
@@ -202,6 +214,8 @@ div.csl-indent {
 
 </header>
 
+<section id="motivating-question" class="level1">
+<h1>Motivating Question</h1>
 <p>Lego sets all come with different themes. Each theme serves the purpose of being created to entertain a specific audience. The purpose of this analysis is to look at the difference in Lego set sizes, quantified by the number of Lego “bricks”, or pieces, according to the theme. This can give us a deeper insight into how Lego produces their sets, who their inteded audience is, and how many sets of that specific theme are produces. With this analysis, I aim to answer the question; Does a Lego theme affect a set’s size?</p>
 <p>The intended audience for this data analysis are all Lego enthusiasts, and those interested in learning about the way that the Lego company thinks about the size of their sets depending on the theme. The original data came from the tidytuesday library, and it was published on September 6, 2022 (https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-09-06)<span class="citation" data-cites="tidytuesday">(<a href="#ref-tidytuesday" role="doc-biblioref">Mock 2022</a>)</span>. Tidytuesday is a wonderful data source which allows users to practice their data science skils <span class="citation" data-cites="shrestha2021remote">(<a href="#ref-shrestha2021remote" role="doc-biblioref">Shrestha, Barik, and Parnin 2021</a>)</span>. The data dictionary is included in the github repository linked above.</p>
 <div class="cell">
@@ -223,7 +237,7 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/dlopez31/Desktop/intro-alejandro-lopez</code></pre>
+<pre><code>here() starts at /Users/dlopez31/Desktop/biostat840-intro-alejandro-lopez</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -247,6 +261,9 @@ Attaching package: 'data.table'</code></pre>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(sets, <span class="at">file =</span> <span class="fu">here</span>(<span class="st">"data"</span>,<span class="st">"sets.RDS"</span>))</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(themes, <span class="at">file =</span> <span class="fu">here</span>(<span class="st">"data"</span>,<span class="st">"themes.RDS"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="pieces-or-number-of-sets" class="level1">
+<h1>Pieces or Number of Sets?</h1>
 <p>First, we are interested in joining the “sets” dataset containing all Lego sets created since 1965, with the “themes” dataset, containing the themes associated with the Lego sets.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>sets <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>,<span class="st">"sets.RDS"</span>))</span>
@@ -345,6 +362,9 @@ Attaching package: 'data.table'</code></pre>
 <p><img src="analysis_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+</section>
+<section id="change-in-number-of-pieces-over-the-years" class="level1">
+<h1>Change in Number of Pieces over the Years</h1>
 <p>Using the list of themes that have the most number of pieces, now we will analyze how the number of pieces has changed over the years for each theme. We will also look at how the number of total sets produced per theme has varied. We will focus on the last 25 years only.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>top <span class="ot">&lt;-</span> with_theme <span class="sc">%&gt;%</span> <span class="fu">filter</span>(theme_name <span class="sc">%in%</span> most_popular_pieces) <span class="sc">%&gt;%</span> <span class="fu">select</span>(set_num, year, num_parts, theme_name) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(num_parts <span class="sc">&gt;</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(theme_name, year) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">sum =</span> <span class="fu">sum</span>(num_parts), <span class="at">n=</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">&gt;=</span> <span class="dv">1997</span>) <span class="sc">%&gt;%</span> <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -393,6 +413,9 @@ Attaching package: 'data.table'</code></pre>
 </div>
 </div>
 <p>On the graphs above, we see how the number of pieces per theme has changed in graph 1, as well as how the number of sets produced per theme has changed in graph 2, both over the last 25 years. In graph 1, We see in general that the total number of pieces per year has increased per theme. In graph 2, we see that some themes have largely increased the number of sets made, we see this for “Friends”, “City”, “Star Wars”, “Ninjago” and “Harry Potter”. On the other hand, “LEGO Ideas and CUUSOO” has increased, but the number of sets produced per year is still very low. This is in contrast to its number of pieces, which seems to have increased to upwards of 10000 by 2021.</p>
+</section>
+<section id="distribution-of-number-of-sets" class="level1">
+<h1>Distribution of Number of Sets</h1>
 <p>In the plot below, we examine the distribution of the total number of sets produced per theme. We see that these themes all have varying distributions. The mean number of sets produced per theme ranges from 1 to upwards of 40. The “Friends” theme has the highest average number of sets made and it was also in the top for the most number of total pieces.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>top_no_zero <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(theme_name, n)) <span class="sc">+</span> <span class="fu">coord_flip</span>() <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x=</span><span class="st">'Number of Sets'</span>, <span class="at">y=</span><span class="st">'Theme Name'</span>, <span class="at">title=</span><span class="st">'Distribution of number of Lego sets per theme'</span>, <span class="at">subtitle=</span><span class="st">"Distributions of Lego sets vary widely by theme. Some have an average </span><span class="sc">\n</span><span class="st">number of sets upwards of 40, while the majority has an average number </span><span class="sc">\n</span><span class="st">of sets below 15."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -414,6 +437,9 @@ Attaching package: 'data.table'</code></pre>
 <p><img src="analysis_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+</section>
+<section id="looking-at-specific-themes" class="level1 page-columns page-full">
+<h1>Looking at Specific Themes</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>friends_mean <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">mean</span>(friends<span class="sc">$</span>num_parts))</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>friends_max <span class="ot">&lt;-</span> <span class="fu">max</span>(friends<span class="sc">$</span>num_parts)</span>
@@ -584,6 +610,9 @@ Things to keep in mind regarding the analysis
 </div>
 </div>
 </div>
+</section>
+<section id="pictures-of-the-sets" class="level1">
+<h1>Pictures of the Sets!</h1>
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
@@ -650,9 +679,26 @@ Things to keep in mind regarding the analysis
 </div>
 </div>
 </div>
+</section>
+<section id="functions-used" class="level1">
+<h1>Functions Used</h1>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The functions used were filter, group_by, summarize, arrange, inner_join, select</p>
+</div>
+</div>
 
 
 
+</section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
 <div id="ref-tidytuesday" class="csl-entry" role="doc-biblioentry">

@@ -1,1 +1,0 @@
-"0","with_theme %>% filter(year >= 1997, num_parts > 10) %>% group_by(year) %>% summarize(avg = mean(num_parts)) %>% ggplot(aes(year, avg)) + geom_line() + labs(x='Year', y='Average Number of Pieces', title='Average Number of Pieces in Last 25 Years', subtitle=""Average number of pieces has increased in the last 25 years."")"

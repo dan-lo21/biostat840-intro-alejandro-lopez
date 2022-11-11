@@ -2,11 +2,15 @@
 title: "About Me"
 ---
 
-I was born and raised in the beautiful city of Guadalajara, Mexico, the home of tequila and mariachi music. I then moved to Los Angeles, California, where I spent my teenage years. I then attended UC Berkeley from 2016-2021, where I majored in Molecular and Cellular Biology and Latin American Literatures and Languages and I minored in Data Science and Public Health. 
+# Education
+
+I attended UC Berkeley in the period 2016-2021 and obtained majors in Molecular and Cellular Biology and Latin American Literatures and Languages and minored in Data Science and Public Health
 
 It was during my undergrad that I fostered my interests in biology, as well as data science. I was part of several research labs, in which I learned how to use data science methods to analyze public health data, specifically in Latin American countries. The last project I worked on had to do with analyzing covid prevalence in Mexico and examining whether socioeconomic variables had any impact on mortality. 
 
 Even though I enjoyed the working with public health databases and analyzing that data, my interests have shifted recently to the analysis of biological data. 
+
+# Personal 
 
 On my free time, I enjoy watching movies, traveling, listening to music, and taking pictures!
 My favorite movie to come out in this last year is the movie Drive My Car by Ryusuke Hamaguchi, based on Haruki Murakami's short story of the same name. A song I have recently enjoyed is DESPECHÁ by Rosalía. 

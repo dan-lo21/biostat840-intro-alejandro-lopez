@@ -3,6 +3,7 @@ title: "Analysis"
 editor: visual
 bibliography: bibliography.bib
 ---
+# Motivating Question
 
 Lego sets all come with different themes. Each theme serves the purpose of being created to entertain a specific audience. The purpose of this analysis is to look at the difference in Lego set sizes, quantified by the number of Lego "bricks", or pieces, according to the theme. This can give us a deeper insight into how Lego produces their sets, who their inteded audience is, and how many sets of that specific theme are produces. With this analysis, I aim to answer the question; Does a Lego theme affect a set's size?
 
@@ -27,6 +28,8 @@ themes <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tid
 saveRDS(sets, file = here("data","sets.RDS"))
 saveRDS(themes, file = here("data","themes.RDS"))
 ```
+
+# Pieces or Number of Sets?
 
 First, we are interested in joining the "sets" dataset containing all Lego sets created since 1965, with the "themes" dataset, containing the themes associated with the Lego sets.
 
@@ -83,6 +86,8 @@ with_theme %>% filter(year >= 1997, num_parts > 10) %>% group_by(year) %>% summa
 with_theme %>% filter(year >= 1997, num_parts > 10) %>% group_by(year) %>% summarize(n = n()) %>% ggplot(aes(year, n)) + geom_line() + labs(x='Year', y='Number of Sets', title='Number of Sets in Last 25 Years', subtitle="Number of sets has increased in the last 25 years.")
 ```
 
+# Change in Number of Pieces over the Years
+
 Using the list of themes that have the most number of pieces, now we will analyze how the number of pieces has changed over the years for each theme. We will also look at how the number of total sets produced per theme has varied. We will focus on the last 25 years only.
 
 ```{r}
@@ -111,6 +116,8 @@ top %>% ggplot(aes(year, n)) + geom_line() + facet_wrap('theme_name') + labs(x='
 
 On the graphs above, we see how the number of pieces per theme has changed in graph 1, as well as how the number of sets produced per theme has changed in graph 2, both over the last 25 years. In graph 1, We see in general that the total number of pieces per year has increased per theme. In graph 2, we see that some themes have largely increased the number of sets made, we see this for "Friends", "City", "Star Wars", "Ninjago" and "Harry Potter". On the other hand, "LEGO Ideas and CUUSOO" has increased, but the number of sets produced per year is still very low. This is in contrast to its number of pieces, which seems to have increased to upwards of 10000 by 2021.
 
+# Distribution of Number of Sets
+
 In the plot below, we examine the distribution of the total number of sets produced per theme. We see that these themes all have varying distributions. The mean number of sets produced per theme ranges from 1 to upwards of 40. The "Friends" theme has the highest average number of sets made and it was also in the top for the most number of total pieces.
 
 ```{r}
@@ -131,6 +138,8 @@ friends <- with_theme %>% filter(theme_name == 'Friends', num_parts > 10)
 sets_of_interest <- rbind(harry_potter, lego_ideas, friends)
 sets_of_interest %>% ggplot(aes(x=year, fill=theme_name)) + geom_bar() + labs(x='Year', y='Number of Sets', title='Number of Sets for Select Themes in the Last 25 Years', subtitle="Friends has the highest number of sets produced per year. Harry Potter was the first theme to \nstart in 2001, but had a dry spell in the late 2000's.") + guides(fill=guide_legend(title="Theme Name"))
 ```
+
+# Looking at Specific Themes
 
 ```{r}
 friends_mean <- round(mean(friends$num_parts))
@@ -190,6 +199,8 @@ The "Friends" theme is marketed for kids, specifically young girls.These sets ar
 If there was data with the sales price for each set, we would be able to get a lot more information on how exactly it is that the Lego company chooses what sets are made and how big they are. There are many other factors that contribute to how many pieces each set has and how many sets are made per theme, such as minifigure inclusion, rarity of pieces, etc. 
 :::
 
+# Pictures of the Sets!
+
 ::: {layout="[[1], [1, 1], [1, 1]]"}
 ![Diagon Alley](diagon_alley)
 
@@ -205,3 +216,12 @@ If there was data with the sales price for each set, we would be able to get a l
 
 ![Heartlake Grand Hotel](heartlake_hotel)
 :::
+
+# Functions Used
+
+::: {.callout-note}
+The functions used were filter, group_by, summarize, arrange, inner_join, select
+:::
+
+
+
