@@ -1,1 +1,1 @@
-Sitemap: https://dan-lo21.github.io/intro-alejandro-lopez/sitemap.xml
+Sitemap: https://github.com/dan-lo21/biostat840-intro-alejandro-lopez/sitemap.xml
